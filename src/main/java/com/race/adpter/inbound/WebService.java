@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.race.adpter.repository.RaceRepository;
 import com.race.adpter.repository.entitys.CircuitEntity;
-import com.race.domin.Servicos;
+import com.race.domin.businessrules.Servicos;
 
 @RestController
-@RequestMapping("/cu")
+@RequestMapping("/")
 @CrossOrigin(origins = "*")
 public class WebService {
 
@@ -27,10 +28,18 @@ public class WebService {
 //		return new ResponseEntity<>(servicos.incluirMovimento(movimento),HttpStatus.OK);
 //	}
 //	
-	@GetMapping
-	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("drivers/winning/")
+//	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<?> CarregarTodos(){
-		return new ResponseEntity<>(servicos.carregarTodosMovimentos(),HttpStatus.OK);
+		return new ResponseEntity<>(servicos.getpilotsWithVictory(),HttpStatus.OK);
+	}
+	@Autowired
+	private RaceRepository raceRepository;
+	
+	@GetMapping("drivers/wins-gap/")
+//	@CrossOrigin(origins = "http://localhost:4200")
+	public ResponseEntity<?> pilotsGapWinsBuilder(){
+		return new ResponseEntity<>(servicos.getpilotsGapVictory(),HttpStatus.OK);
 	}
 //	
 //	@GetMapping("/produtos")

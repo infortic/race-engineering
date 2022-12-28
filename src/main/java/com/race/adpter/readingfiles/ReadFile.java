@@ -184,11 +184,30 @@ public class ReadFile {
 		//10
 		public List<RacesEntity> readRaces() throws IOException{ 
 			List<RacesEntity> list = new ArrayList<RacesEntity>();
-			for (String[] item : util.readCsvFiles("src/main/resources/csv/races.csv")) {}
+			for (String[] item : util.readCsvFiles("src/main/resources/csv/races.csv")) {
 				RacesEntity entity = RacesEntity.with()
-						.raceId(null)
+						.raceId(Long.valueOf(item[0]))
+						.yearTextss(item[1])
+						.round(Integer.valueOf(item[2]))
+						.circuitId(Long.valueOf(item[3]))
+						.name(item[4])
+						.date(item[5])
+						.time(item[6])
+						.url(item[7])
+						.fp1Date(item[8])
+						.fp1Time(item[9])
+						.fp2Date(item[10])
+						.fp2Time(item[11])
+						.fp3Date(item[12])
+						.fp3Time(item[13])
+						.qualiDate(item[14])
+						.qualiTime(item[15])
+						.sprintDate(item[16])
+						.sprintTime(item[17])
 						.build();
 				list.add(entity);
+			}
+				
 			
 			return list;
 		}	

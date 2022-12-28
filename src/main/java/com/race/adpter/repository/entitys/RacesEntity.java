@@ -31,6 +31,7 @@ public class RacesEntity {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) private Long id;
 	
 	private Long raceId;
+	private Long driverId;
 	private String yearTextss;
 	private Integer round;
 	private Long circuitId;
@@ -38,7 +39,7 @@ public class RacesEntity {
 	private String date;
 	private String time;
 	private String url;
-	private String f1Date;
+	private String fp1Date;
 	private String fp1Time;
 	private String fp2Date;
 	private String fp2Time;
